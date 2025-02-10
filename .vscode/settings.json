@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "COSC_416_Assignement_2.sln"
+    "dotnet.defaultSolution": "Assignment-2_416_bowlingBallGame.sln"
 }
