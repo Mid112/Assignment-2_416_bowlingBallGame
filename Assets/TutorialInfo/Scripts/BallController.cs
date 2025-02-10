@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BallController : MonoBehaviour
 {
     [SerializeField] private float force = 1f;
@@ -14,12 +15,19 @@ public class BallController : MonoBehaviour
         ballRB = GetComponent<Rigidbody>();
         //Need to make an initial commit
         inputManager.OnSpacePressed.AddListener(LaunchBall);
-        transform.parent = ballAnchor;
-        transform.localPosition = Vector3.zero;
-        ballRB.isKinematic = true;
+        
+        ResetBall();
 
     } 
 
+    private void ResetBall()
+    {
+        isBallLaunched = false;
+        ballRB.isKinematic = true;
+        transform.parent = ballAnchor;
+        transform.localPosition = Vector3.zero;
+        lauchIndicator.gameObject.SetActive(true);
+    }
 
     // Update is called once per frame
     private void LaunchBall()
