@@ -4,6 +4,7 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private float force = 1f;
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private Transform ballAnchor;
     private Rigidbody ballRB;
     private bool isBallLaunched = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,6 +13,9 @@ public class BallController : MonoBehaviour
         ballRB = GetComponent<Rigidbody>();
         //Need to make an initial commit
         inputManager.OnSpacePressed.AddListener(LaunchBall);
+        transform.parent = ballAnchor;
+        transform.localPosition = Vector3.zero;
+        ballRB.isKinematic = true;
 
     } 
 
@@ -21,6 +25,8 @@ public class BallController : MonoBehaviour
     {
         if (isBallLaunched) return;
         isBallLaunched = true;
+        transform.parent = null;
+        ballRB.isKinematic = false;
         ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
     }
 }
