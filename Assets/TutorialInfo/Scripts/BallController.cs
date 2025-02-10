@@ -28,7 +28,7 @@ public class BallController : MonoBehaviour
         isBallLaunched = true;
         transform.parent = null;
         ballRB.isKinematic = false;
-        ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
+        ballRB.AddForce(lauchIndicator.forward * force, ForceMode.Impulse);
         lauchIndicator.gameObject.SetActive(false);
     }
 }
