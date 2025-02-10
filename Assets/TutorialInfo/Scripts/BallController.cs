@@ -5,6 +5,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private float force = 1f;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Transform ballAnchor;
+    [SerializeField] private Transform lauchIndicator;
     private Rigidbody ballRB;
     private bool isBallLaunched = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,5 +29,6 @@ public class BallController : MonoBehaviour
         transform.parent = null;
         ballRB.isKinematic = false;
         ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
+        lauchIndicator.gameObject.SetActive(false);
     }
 }
