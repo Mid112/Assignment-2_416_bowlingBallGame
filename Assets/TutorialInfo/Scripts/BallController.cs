@@ -14,16 +14,18 @@ public class BallController : MonoBehaviour
     {
         ballRB = GetComponent<Rigidbody>();
         //Need to make an initial commit
+        Cursor.lockState = CursorLockMode.Locked;
         inputManager.OnSpacePressed.AddListener(LaunchBall);
         
         ResetBall();
 
     } 
 
-    private void ResetBall()
+    public void ResetBall()
     {
         isBallLaunched = false;
         ballRB.isKinematic = true;
+        lauchIndicator.gameObject.SetActive(true);
         transform.parent = ballAnchor;
         transform.localPosition = Vector3.zero;
         lauchIndicator.gameObject.SetActive(true);
@@ -39,4 +41,6 @@ public class BallController : MonoBehaviour
         ballRB.AddForce(lauchIndicator.forward * force, ForceMode.Impulse);
         lauchIndicator.gameObject.SetActive(false);
     }
+
+    //8 Ball by Jarlan Perez [CC-BY] via Poly Pizza
 }

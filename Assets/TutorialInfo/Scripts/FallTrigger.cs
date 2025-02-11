@@ -13,7 +13,6 @@ public class FallTrigger : MonoBehaviour
         {
             isFallen = true;
         OnPinFall?.Invoke();
-        Debug.Log($"{gameObject.name} has fallen");
         }
         
     }
