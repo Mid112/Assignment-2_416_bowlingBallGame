@@ -16,8 +16,8 @@ public class BallController : MonoBehaviour
         //Need to make an initial commit
         Cursor.lockState = CursorLockMode.Locked;
         inputManager.OnSpacePressed.AddListener(LaunchBall);
+        inputManager.OnResetPressed.AddListener(ResetBall);
         
-        ResetBall();
 
     } 
 
